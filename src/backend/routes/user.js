@@ -16,6 +16,7 @@ const singUpBody =z.object({
 })
 
 router.post("/signup", async (req,res)=>{
+    const body =req.body;
     const {success} = singUpBody.safeParse(req.body)
     if(!success){
         return  res.status(411).json({
@@ -37,6 +38,15 @@ router.post("/signup", async (req,res)=>{
         password:req.body.password
     })
     const userId= user._id;
+    // giving a random balance to your account
+
+    await Account.create({
+        userId,
+        balance:1+ Math.random()*10000
+    })
+
+
+    
 
     const token =jwt.sign({
         userId
@@ -101,7 +111,7 @@ router.put("/user",async (req,res)=>{
 })
 
 router.get("/bulk",async (req,res)=>{
-    const filter= req.params.filter || "";
+    const filter= req.query.filter || "";
     const users= await User.find({
         $or:[{
             firstName:{
