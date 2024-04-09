@@ -1,12 +1,12 @@
-const express =require("express");
-var cors= require("cors");
-const app= express()
-const port=3000;
-const MainRouter= require("./routes/index");
+const express = require('express');
+const cors = require("cors");
+const rootRouter = require("./routes/index");
 
-app.use(cors())
-app.use("/api/v1", MainRouter);
+const app = express();
 
-app.listen(port,()=>{
-    console.log(`Server is running on http://localhost:${port}`)
-})
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/v1", rootRouter);
+
+app.listen(3000);
