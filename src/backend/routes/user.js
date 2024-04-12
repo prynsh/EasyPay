@@ -81,7 +81,8 @@ router.post("/signin", async (req, res) => {
   
         res.json({
             token: token,
-            userId: user._id
+            firstName :user.firstName,
+            lastName: user.lastName,
         })
         return;
     }
