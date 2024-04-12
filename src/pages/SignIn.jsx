@@ -92,7 +92,7 @@ export const Signin = () => {
                     <div className="pt-4">
                         <Button onClick={handleSignIn} label={"Sign in"} />
                     </div>
-                    <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"} />
+                    <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/"} />
                 </div>
             </div>
         </div>
